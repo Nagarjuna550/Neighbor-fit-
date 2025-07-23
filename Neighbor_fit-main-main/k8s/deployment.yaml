@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: neighborfit-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neighborfit-frontend
+  template:
+    metadata:
+      labels:
+        app: neighborfit-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: neighborfit-frontend:latest
+          imagePullPolicy: Never           # ✅ This line is important
+          ports:
+            - containerPort: 4173
